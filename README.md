@@ -65,10 +65,3 @@ The server side will be available in address [http://localhost:4200](http://loca
 ### 3. Project usage
 
 Now you can use project "Nest.js + Angular". The server side works on posrt 3000, but client side works on port 4200. Open the browser and move to the address  [http://localhost:4200](http://localhost:4200).
-
-## Дополнительная информация
-
-- Для настройки базы данных или других конфигурационных параметров серверной части, пожалуйста, отредактируйте соответствующие файлы в папке `backend/`.
-- Для изменения или расширения функционала клиентской части, редактируйте файлы в папке `frontend/`.
-
----
