@@ -42,6 +42,12 @@ The server side will be available in port 3000 [http://localhost:3000](http://lo
 
 ### 2. Frontend part start (Angular)
 
+Rename .env.example file to .env
+
+Put your DB path for the MONGODB_URI variable in the .env file
+
+
+
 Open the second terminal window and move to the folder `front/`:
 
 ```bash
