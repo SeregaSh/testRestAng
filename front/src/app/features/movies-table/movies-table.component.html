@@ -1,0 +1,23 @@
+<button mat-button (click)="openCreateMovieModal()">Add Movie</button>
+
+<table class="movies-table">
+    <th *ngFor="let label of HEADS">{{ label | uppercase }}</th>
+    <tbody *ngIf="(movies$ | async)?.length; else nomovies">
+        <tr *ngFor="let movie of movies$ | async">
+            <td *ngFor="let key of KEYS_TO_RENDER">
+                <span *ngIf="key === 'action'">
+                    <button mat-button (click)="openEditMovieModal(movie._id)">Edit Movie</button>
+                    <button mat-button (click)="deleteMovie(movie._id)">Delete Movie</button>
+                </span>
+                <span *ngIf="key === 'image'">
+                    <img style="width: 100px;" [src]="movie.image"/>
+                </span>
+                <span *ngIf="key !== 'image' && key !== 'action'">{{ $any(movie)[key]}}</span>
+            </td>
+        </tr>
+    </tbody>
+    
+    <ng-template #nomovies>
+        <div class="no-movies-text"><h3>No Movies exist</h3></div>
+    </ng-template>
+</table>

@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>{{title}}</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <input matInput type="text" placeholder="Name" formControlName="name">
+      <mat-error *ngIf="form.get('name')?.hasError('required')">{{'This field is mandatory'}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput type="text" placeholder="Genre" formControlName="genre">
+        <mat-error *ngIf="form.get('genre')?.hasError('required')">{{'This field is mandatory'}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput type="text" placeholder="Released" formControlName="release">
+        <mat-error *ngIf="form.get('release')?.hasError('required')">{{'This field is mandatory'}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput type="text" placeholder="Image" formControlName="image">
+        <mat-error *ngIf="form.get('Image')?.hasError('required')">{{'This field is mandatory'}}</mat-error>
+    </mat-form-field>
+  </form>
+  <!-- <div #googleAuthBtn></div> -->
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onSaveMovie()" [disabled]="form.invalid">Save</button>
+  <button mat-button (click)="onClose()">Cancel</button>
+</mat-dialog-actions>
+

@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="button" (click)="toggleDropdown()">
+        <div style="display: flex; width: 100%; justify-content: space-between;">
+            {{ selectedOption?.value || "Select an option" }}
+            <img [ngClass]="{ active: isDropdowActive }" src="../../../../assets/icons/arrow_drop_down.svg" (click)="selectedOption = undefined"/>
+        <div class="dropdown" [ngClass]="{ active: isDropdowActive }">
+            <ul>
+                <li *ngFor="let option of options | async">
+                    <a (click)="onSelect($event, option)" href="#">{{ option.value }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

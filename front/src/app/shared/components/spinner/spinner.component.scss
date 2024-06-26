@@ -1,0 +1,24 @@
+:host {
+    position: absolute;
+    top: 0;
+
+    z-index: 99999;
+
+    .spinner-wrapper {
+
+        background-color: black;
+        width: 100vw;
+        height: 100vh;
+        opacity: 0.4;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            width: 50px;
+            height: 50px;
+        }
+    }
+}
+

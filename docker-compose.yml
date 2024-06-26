@@ -1,0 +1,59 @@
+services:
+  api:
+    build:
+      dockerfile: Dockerfile
+      context: ./api
+      target: development
+
+    volumes:
+      - ./api:/test/src/app
+      - /test/src/app/node_modules
+
+    command: npm run start:dev
+    depends_on:
+        - postgres
+    environment: 
+      DATABASE_URL: postrgres://serg:admin@postgres:5432/db
+      NODE_ENV: development
+      PORT: 3000
+    ports:
+      - 3000:3000
+      
+
+  postgres:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: serg
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: test
+    ports:
+      - 35000:5432
+
+
+
+  postgres_admin:
+    image: dpage/pgadmin4:8.8
+    depends_on:
+      - postgres
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: password
+    ports:
+      - 5050:80
+   
+
+  front:
+    build: 
+      dockerfile: Dockerfile
+      context: ./front
+      target: development
+    command: npm run start
+    volumes:
+      - ./frontend:/test/front/src/app
+      - /test/front/src/app/node_modules
+
+    ports:
+      - 4200:4200
+    links:
+      - api
