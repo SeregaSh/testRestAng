@@ -8,7 +8,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
-    // MongooseModule.forRoot('mongodb+srv://tempuser:Dq7HleCADpjKzNOI@cluster0.pd6ytrm.mongodb.net/moviesTest'),
     MongooseModule.forRootAsync({
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
